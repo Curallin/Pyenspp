@@ -1,0 +1,66 @@
+[project]
+name = "pyenspp"
+version = "0.1.0"
+description = "A Python package for ensemble precipitation forecast post processing."
+readme = "README.md"
+authors = [
+  {name = "Fuxuan Jiang", email = "JungleSYSU2020@163.com"}
+]
+maintainers = [
+  {name = "Fuxuan Jiang", email = "JungleSYSU2020@163.com"}
+]
+classifiers = [
+    "Typing :: Typed",
+    # TODO: Add additional classifiers as needed
+]
+license = {text = "MIT"}
+dependencies = [
+  "typer",
+  "rich",
+]
+requires-python = ">= 3.10"
+
+[dependency-groups]
+dev = [
+    { include-group = "lint" },
+    { include-group = "test" },
+]
+lint = [
+    "ruff",
+]
+test = [
+    "coverage",
+    "pytest",
+    "ty",
+    "ipdb",
+]
+
+[project.urls]
+bugs = "https://github.com/Curallin/pyenspp/issues"
+changelog = "https://github.com/Curallin/pyenspp/blob/main/HISTORY.md"
+homepage = "https://github.com/Curallin/pyenspp"
+
+[project.scripts]
+pyenspp = "pyenspp.cli:app"
+
+[tool.ty]
+# All rules are enabled as "error" by default; no need to specify unless overriding.
+# Example override: relax a rule for the entire project (uncomment if needed).
+# rules.TY015 = "warn"  # For invalid-argument-type, warn instead of error.
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+
+[tool.uv]
+package = true
+default-groups = ["dev"]
